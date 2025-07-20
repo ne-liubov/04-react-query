@@ -1,6 +1,6 @@
 import css from "./App.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import ReactPaginate from "react-paginate";
 import toast, { Toaster } from "react-hot-toast";
@@ -33,11 +33,13 @@ export default function App() {
   const handleSearch = async (query: string) => {
     setQuery(query);
     setPage(1);
+  };
 
-    if (movies?.length === 0) {
+  useEffect(() => {
+    if (query.trim() !== "" && movies && movies.length === 0) {
       toast.error("No movies found for your request.");
     }
-  };
+  }, [movies, query]);
 
   const openMovieModal = (movie: Movie) => {
     setIsMovieModal(movie);
