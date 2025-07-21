@@ -59,12 +59,15 @@ export default function App() {
           pageCount={totalPages}
           pageRangeDisplayed={5}
           marginPagesDisplayed={1}
-          onPageChange={({ selected }) => setPage(selected + 1)}
+          onPageChange={({ selected }) => {
+            if (!isLoading) setPage(selected + 1);
+          }}
           forcePage={page - 1}
           containerClassName={css.pagination}
           activeClassName={css.active}
-          nextLabel="→"
+          disabledClassName={css.disabled}
           previousLabel="←"
+          nextLabel="→"
         />
       )}
 

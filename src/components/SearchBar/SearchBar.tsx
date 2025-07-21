@@ -1,5 +1,5 @@
 import css from "./SearchBar.module.css";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 interface SearchBarProps {
   onSubmit: (query: string) => void;
@@ -40,7 +40,6 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
           <button className={css.button} type="submit">
             Search
           </button>
-          <Toaster position="top-center" />
         </form>
       </div>
     </header>
